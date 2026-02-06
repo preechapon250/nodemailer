@@ -1,5 +1,74 @@
 # CHANGELOG
 
+## [9.0.0](https://github.com/preechapon250/nodemailer/compare/v8.0.0...v9.0.0) (2026-02-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Error code 'NoAuth' renamed to 'ENOAUTH'
+* SESv2 SDK support, removed older SES SDK v2 and v3 , removed SES rate limiting and idling features
+
+### Features
+
+* added https://forwardemail.net to well-known services ([c77d70f](https://github.com/preechapon250/nodemailer/commit/c77d70f6ed885695e7778f9604591f48f852e817))
+* **services:** add Seznam email service configuration ([#1695](https://github.com/preechapon250/nodemailer/issues/1695)) ([d1ae0a8](https://github.com/preechapon250/nodemailer/commit/d1ae0a86883ba6011a49a5bbdf076098e2e3637a))
+* SESv2 SDK support, removed older SES SDK v2 and v3 , removed SES rate limiting and idling features ([15db667](https://github.com/preechapon250/nodemailer/commit/15db667af2d0a5ed835281cfdbab16ee73b5edce))
+
+
+### Bug Fixes
+
+* `requeueAttempts=n` should requeue `n` times ([3bfc545](https://github.com/preechapon250/nodemailer/commit/3bfc5452f74e84d8f9aacb2eec7b8a4726b5b40d))
+* 🐛 ses verify, add support for v3 API ([6107585](https://github.com/preechapon250/nodemailer/commit/61075851839207b1ff541b77797ef7afe3c46c42))
+* add connection fallback to alternative DNS addresses ([e726d6f](https://github.com/preechapon250/nodemailer/commit/e726d6f44aa7ca14e943d4303243cb5494b09c75))
+* added support for REQUIRETLS ([#1793](https://github.com/preechapon250/nodemailer/issues/1793)) ([053ce6a](https://github.com/preechapon250/nodemailer/commit/053ce6a772a7c608e6bee7f58ebe9900afbd9b84))
+* **addressparser:** Correctly detect if user local part is attached to domain part ([f2096c5](https://github.com/preechapon250/nodemailer/commit/f2096c51b92a69ecfbcc15884c28cb2c2f00b826))
+* **addressparser:** Fixed addressparser handling of quoted nested email addresses ([1150d99](https://github.com/preechapon250/nodemailer/commit/1150d99fba77280df2cfb1885c43df23109a8626))
+* **addressparser:** flatten nested groups per RFC 5322 ([8f8a77c](https://github.com/preechapon250/nodemailer/commit/8f8a77c67f0ba94ddf4e16c68f604a5920fb5d26))
+* **api:** Added support for Ethereal authentication ([56b2205](https://github.com/preechapon250/nodemailer/commit/56b22052a98de9e363f6c4d26d1512925349c3f3))
+* **attachments:** Set the default transfer encoding for message/rfc822 attachments as '7bit' ([007d5f3](https://github.com/preechapon250/nodemailer/commit/007d5f3f40908c588f1db46c76de8b64ff429327))
+* centralize and standardize error codes ([45062ce](https://github.com/preechapon250/nodemailer/commit/45062ce7a4705f3e63c5d9e606547f4d99fd29b5))
+* close correct socket ([a18062c](https://github.com/preechapon250/nodemailer/commit/a18062c04d0e05ca4357fbe8f0a59b690fa5391e))
+* **customAuth:** Do not require user and pass to be set for custom authentication schemes (fixes [#1584](https://github.com/preechapon250/nodemailer/issues/1584)) ([41d482c](https://github.com/preechapon250/nodemailer/commit/41d482c3f01e26111b06f3e46351b193db3fb5cb))
+* **data-uri:** Do not use regular expressions for parsing data URI schemes ([12e65e9](https://github.com/preechapon250/nodemailer/commit/12e65e975d80efe6bafe6de4590829b3b5ebb492))
+* **data-uri:** Moved all data-uri regexes to use the non-regex parseDataUri method ([edd5dfe](https://github.com/preechapon250/nodemailer/commit/edd5dfe5ce9b725f8b8ae2830797f65b2a2b0a33))
+* **dns:** add memory leak prevention for DNS cache ([0240d67](https://github.com/preechapon250/nodemailer/commit/0240d6795ded6d8008d102161a729f120b6d786a))
+* downgrade transient connection error logs to warn level ([4c041db](https://github.com/preechapon250/nodemailer/commit/4c041db85d560e98bc5e1fd5d5a191835c5b7d2f))
+* DSN recipient gets ignored ([75a1504](https://github.com/preechapon250/nodemailer/commit/75a1504e10f20156ef2cecefc27e47e588ab2c80))
+* **encoder:** avoid silent data loss by properly flushing trailing base64 ([#1747](https://github.com/preechapon250/nodemailer/issues/1747)) ([01ae76f](https://github.com/preechapon250/nodemailer/commit/01ae76f2cfe991c0c3fe80170f236da60531496b))
+* Fix memory leak ([#1667](https://github.com/preechapon250/nodemailer/issues/1667)) ([baa28f6](https://github.com/preechapon250/nodemailer/commit/baa28f659641a4bc30360633673d851618f8e8bd))
+* handle multiple XOAUTH2 token requests correctly ([#1754](https://github.com/preechapon250/nodemailer/issues/1754)) ([dbe0028](https://github.com/preechapon250/nodemailer/commit/dbe00286351cddf012726a41a96ae613d30a34ee))
+* harden DNS fallback against race conditions and cleanup issues ([4fa3c63](https://github.com/preechapon250/nodemailer/commit/4fa3c63a1f36aefdbaea7f57a133adc458413a47))
+* **headers:** Ensure that Content-type is the bottom header ([c7cf97e](https://github.com/preechapon250/nodemailer/commit/c7cf97e5ecc83f8eee773359951df995c9945446))
+* improve socket cleanup to prevent potential memory leaks ([6069fdc](https://github.com/preechapon250/nodemailer/commit/6069fdcff68a3eef9a9bb16b2bf5ddb924c02091))
+* Increase data URI size limit from 100KB to 50MB and preserve content type ([28dbf3f](https://github.com/preechapon250/nodemailer/commit/28dbf3fe129653f5756c150a98dc40593bfb2cfe))
+* **inline:** Use 'inline' as the default Content Dispostion value for embedded images ([db32c93](https://github.com/preechapon250/nodemailer/commit/db32c93fefee527bcc239f13056e5d9181a4d8af))
+* **legacy:** Removed post-install script (not used anymore) and CONTRIBUTIONS.md (leftover from OpenCollective) ([13672b2](https://github.com/preechapon250/nodemailer/commit/13672b231384d360a1a70f902c6888140f138975))
+* **license:** Updated license year ([da4744e](https://github.com/preechapon250/nodemailer/commit/da4744e491f3a68f4f68e4073684370592630e01))
+* **linter:** Updated eslint and created prettier formatting task ([df13b74](https://github.com/preechapon250/nodemailer/commit/df13b7487e368acded35e45d0887d23c89c9177a))
+* **message-generation:** Escape single quote in address names ([4ae5fad](https://github.com/preechapon250/nodemailer/commit/4ae5fadeaac70ba91abf529fcaae65f829a39101))
+* **mime:** Added GeoJSON closes [#1637](https://github.com/preechapon250/nodemailer/issues/1637) ([#1665](https://github.com/preechapon250/nodemailer/issues/1665)) ([79b8293](https://github.com/preechapon250/nodemailer/commit/79b8293ad557d36f066b4675e649dd80362fd45b))
+* **pools:** Emit 'clear' once transporter is idle and all connections are closed ([839e286](https://github.com/preechapon250/nodemailer/commit/839e28634c9a93ae4321f399a8c893bf487a09fa))
+* prevent stack overflow DoS in addressparser with deeply nested groups ([b61b9c0](https://github.com/preechapon250/nodemailer/commit/b61b9c0cfd682b6f647754ca338373b68336a150))
+* **proxy:** Set error and timeout errors for proxied sockets ([aa0c99c](https://github.com/preechapon250/nodemailer/commit/aa0c99c8f25440bb3dc91f4f3448777c800604d7))
+* **punycode:** do not use native punycode module ([b4d0e0c](https://github.com/preechapon250/nodemailer/commit/b4d0e0c7cc4b15bc4d9e287f91d1bcaca87508b0))
+* ReDoS vulnerability in parseDataURI and _processDataUrl ([#1755](https://github.com/preechapon250/nodemailer/issues/1755)) ([90b3e24](https://github.com/preechapon250/nodemailer/commit/90b3e24d23929ebf9f4e16261049b40ee4055a39))
+* refresh expired DNS cache on error ([#1759](https://github.com/preechapon250/nodemailer/issues/1759)) ([ea0fc5a](https://github.com/preechapon250/nodemailer/commit/ea0fc5a6633a3546f4b00fcf2f428e9ca732cdb6))
+* **release:** Trying to fix release proecess by upgrading Node version in runner ([579fce4](https://github.com/preechapon250/nodemailer/commit/579fce4683eb588891613a6c9a00d8092e8c62d1))
+* resolve linter errors in DNS cache tests ([3b8982c](https://github.com/preechapon250/nodemailer/commit/3b8982c1f24508089a8757b74039000a4498b158))
+* **security:** Fix issues described in GHSA-9h6g-pr28-7cqp. Do not use eternal matching pattern if only a few occurences are expected ([dd8f5e8](https://github.com/preechapon250/nodemailer/commit/dd8f5e8a4ddc99992e31df76bcff9c590035cd4a))
+* **services.json:** Add Email Services Provider Feishu Mail (CN) ([#1648](https://github.com/preechapon250/nodemailer/issues/1648)) ([e9e9ecc](https://github.com/preechapon250/nodemailer/commit/e9e9ecc99b352948a912868c7912b280a05178c6))
+* **services.json:** update Mailtrap host and port in well known ([#1652](https://github.com/preechapon250/nodemailer/issues/1652)) ([fc2c9ea](https://github.com/preechapon250/nodemailer/commit/fc2c9ea0b4c4f4e514143d2a138c9a23095fc827))
+* **ses:** Fixed structured from header ([faa9a5e](https://github.com/preechapon250/nodemailer/commit/faa9a5eafaacbaf85de3540466a04636e12729b3))
+* **ses:** Use formatted FromEmailAddress for SES emails ([821cd09](https://github.com/preechapon250/nodemailer/commit/821cd09002f16c20369cc728b9414c7eb99e4113))
+* **smtp-connection:** jsdoc public annotation for socket ([#1741](https://github.com/preechapon250/nodemailer/issues/1741)) ([c45c84f](https://github.com/preechapon250/nodemailer/commit/c45c84fe9b8e2ec5e0615ab02d4197473911ab3e))
+* **tests:** Removed Node v12 from test matrix as it is not compatible with the test framework anymore ([7fe0a60](https://github.com/preechapon250/nodemailer/commit/7fe0a608ed6bcb70dc6b2de543ebfc3a30abf984))
+* **tests:** Use native node test runner, added code coverage support, removed grunt ([#1604](https://github.com/preechapon250/nodemailer/issues/1604)) ([be45c1b](https://github.com/preechapon250/nodemailer/commit/be45c1b299d012358d69247019391a02734d70af))
+* **tls:** Ensure servername for SMTP ([d66fdd3](https://github.com/preechapon250/nodemailer/commit/d66fdd3dccacc4bc79d697fe9009204cc8d4bde0))
+* updated well known delivery service list ([fa2724b](https://github.com/preechapon250/nodemailer/commit/fa2724b337eb8d8fdcdd788fe903980b061316b8))
+* use 8bit encoding for message/rfc822 attachments ([adf8611](https://github.com/preechapon250/nodemailer/commit/adf86113217b23ff3cd1191af5cd1d360fcc313b))
+* **well-known-services:** Add Loopia in well known services ([#1655](https://github.com/preechapon250/nodemailer/issues/1655)) ([21a28a1](https://github.com/preechapon250/nodemailer/commit/21a28a18fc9fdf8e0e86ddd846e54641395b2cb6))
+* **well-known-services:** Added AliyunQiye ([bb9e6da](https://github.com/preechapon250/nodemailer/commit/bb9e6daffb632d7d8f969359859f88a138de3a48))
+
 ## [8.0.0](https://github.com/nodemailer/nodemailer/compare/v7.0.13...v8.0.0) (2026-02-04)
 
 
